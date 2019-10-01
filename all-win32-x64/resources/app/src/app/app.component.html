@@ -1,0 +1,14 @@
+
+<div style="width:100%;height:100%;">
+    <div *ngIf="(dashboard | async)" id="anime">
+        <button type="button" class="btn btn-square btn-success bt-left">Esplora anime</button>
+    </div>
+    <div *ngIf="(dashboard | async)" id="manga"></div>
+    <div *ngIf="(dashboard | async)" id="logo">
+        <img class="img" src="assets/img/logo.png" alt="Otaku-World">
+    </div>​
+    <div *ngIf="(dashboard | async)" id="login">
+
+    </div>
+    <app-anime *ngIf="!(dashboard | async)"></app-anime>
+</div>

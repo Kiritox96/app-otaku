@@ -1,3 +1,29 @@
-<p>
-  anime works!
-</p>
+<nav>
+  <div class="nav-wrapper blue lighten-3">
+    <img class="brand-logo" style="height:75px;width:150px;"src="assets/img/logo.png" alt="Otaku-World">
+    
+  </div>
+</nav>
+<div  class="row">
+  <div class="col s1 blue lighten-3">
+      
+  </div>
+  <div class="col s4 z-depth-1">
+    <ul *ngIf="(animes | async)" class="collection lista ">
+      <h5 style="padding:15px"><strong>Lista episodi</strong></h5>
+      <div *ngFor="let anime of (animes | async)">
+        <a class="collection-item">
+          <span class="title">{{anime.name}}</span>
+          <span class="badge">{{anime.episodi.length}}</span>
+        </a>
+      </div>
+     
+      
+    </ul>
+  </div>
+
+  <div class="col s9" style="height:100%;background-color:blue">
+    <!-- Teal page content  -->
+  </div>
+
+</div>
