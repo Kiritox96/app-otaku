@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 export interface AnimeState {
    animes: Anime[];
+   selected: Anime;
 }
 export interface Anime {
     id: any;
@@ -19,7 +20,8 @@ export interface Episodi {
 
 export function createInitialState(): AnimeState {
   return {
-    animes: []
+    animes: [],
+    selected: null
   };
 }
 @Injectable({

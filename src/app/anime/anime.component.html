@@ -1,29 +1,33 @@
-<nav>
-  <div class="nav-wrapper blue lighten-3">
-    <img class="brand-logo" style="height:75px;width:150px;"src="assets/img/logo.png" alt="Otaku-World">
-    
-  </div>
+<!-- Just an image -->
+<nav class="navbar navbar-light" style="background-color: #49b3ff;">
+  <a class="navbar-brand">
+    <img style="display: inline-block;height:65px;width:90px;"src="assets/img/logo.png" alt="Otaku-World">
+  </a>
 </nav>
-<div  class="row">
-  <div class="col s1 blue lighten-3">
-      
-  </div>
-  <div class="col s4 z-depth-1">
-    <ul *ngIf="(animes | async)" class="collection lista ">
-      <h5 style="padding:15px"><strong>Lista episodi</strong></h5>
-      <div *ngFor="let anime of (animes | async)">
-        <a class="collection-item">
-          <span class="title">{{anime.name}}</span>
-          <span class="badge">{{anime.episodi.length}}</span>
-        </a>
+<div class="container">
+  <div class="row">
+    <div class="col-4">
+      <div class="panel panel-primary">
+        <div class="panel-heading">Lista episodi</div>
+        <div class="panel-body lista">
+            
+            
+            
+          <ul class="list-group" *ngIf="(animes | async)">
+            <div *ngFor="let anime of (animes | async)">
+              <div class="list-group-item" (click)="selectAnime(anime)">
+                <span><span class="badge badge-pill badge-primary pull-right">{{anime.episodi.length}}</span>  {{anime.name}}</span>
+              </div>
+            </div>
+          </ul>
+    
+    
+        </div>
       </div>
-     
-      
-    </ul>
+    </div>
+    <div class="col-8">
+        col-4
+    </div>
   </div>
-
-  <div class="col s9" style="height:100%;background-color:blue">
-    <!-- Teal page content  -->
-  </div>
-
+ 
 </div>

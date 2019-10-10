@@ -12,11 +12,15 @@ import AnimeQuery from '../stores/anime.query';
 })
 export class AnimeComponent implements OnInit {
   animes: Observable<Anime[]>;
-  constructor(private animeQuery: AnimeQuery) { }
+  selected: Observable<Anime>;
+  constructor(private animeQuery: AnimeQuery, private animeStore: AnimeStore) { }
 
   ngOnInit() {
     this.animes = this.animeQuery.selectAnimes$;
+    this.selected = this.animeQuery.selectSelected$;
   }
-
+  selectAnime(anime: Anime) {
+    this.animeStore.update({ selected: anime });
+  }
 
 }

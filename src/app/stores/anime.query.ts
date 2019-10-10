@@ -6,6 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export default class AnimeQuery extends Query<AnimeState> {
     selectAnimes$ = this.select('animes');
+    selectSelected$ = this.select('selected');
     constructor(protected animeStore: AnimeStore) {
         super(animeStore);
     }
