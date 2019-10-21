@@ -6,7 +6,7 @@
 </nav>
 <div class="container">
   <div class="row">
-    <div class="col-4">
+    <div style="width:30%;">
       <div class="panel panel-primary">
         <div class="panel-heading">Lista episodi</div>
         <div class="panel-body lista">
@@ -20,14 +20,26 @@
               </div>
             </div>
           </ul>
-    
-    
         </div>
       </div>
     </div>
-    <div class="col-8">
+    <div style="width:70%;float:left;">
         col-4
     </div>
   </div>
- 
+</div>
+<div class="footer-no">
+  <p (click)="clickEvidenza()">Evidenza</p>
+  <div class="row box" *ngIf="(viewEvidenza | async)">
+    <div *ngFor="let anime of (evidenza | async)">
+      <div class="card">
+        <div class="imgBx">
+          <img src="{{anime.image}}" >
+        </div>
+        <div class="details">
+          <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

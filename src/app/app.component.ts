@@ -5,6 +5,7 @@ import AnimeStore, { Anime } from './stores/anime.store';
 import { Observable } from 'rxjs';
 import StateQuery from './stores/state.query';
 import AnimeQuery from './stores/anime.query';
+import * as array from './utility/array';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +18,7 @@ export class AppComponent {
   manga: Observable<boolean>;
   animesLength: number;
   data: any;
+  listEvidenza: Anime[];
 
   constructor(
     private animeQuery: AnimeQuery,
@@ -43,10 +45,15 @@ export class AppComponent {
     this.animeQuery.selectAnimes$.subscribe(val => this.animesLength = val.length);
 
   }
+
   getData() {
-    this.animeService.getAllAnimes().subscribe(val =>
-      this.animeStore.update({ animes: val })
-    );
+    this.animeService.getAllAnimes().subscribe(list => {
+      this.animeStore.update({ animes: list });
+      this.animeStore.update({evidenza: list.filter(anime => array.evidenziati.includes(anime.clean))});
+
+    });
+
+
   }
   clickAnime() {
     this.appService.seeAnime();
