@@ -30,8 +30,21 @@
 </div>
 <div class="footer-no">
   <p (click)="clickEvidenza()">Evidenza</p>
+  <p (click)="clickSuggeriti()">Suggeriti</p>
   <div class="row box" *ngIf="(viewEvidenza | async)">
     <div *ngFor="let anime of (evidenza | async)">
+      <div class="card">
+        <div class="imgBx">
+          <img src="{{anime.image}}" >
+        </div>
+        <div class="details">
+          <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row box" *ngIf="(viewSuggeriti | async)">
+    <div *ngFor="let anime of (suggeriti | async)">
       <div class="card">
         <div class="imgBx">
           <img src="{{anime.image}}" >

@@ -8,6 +8,7 @@ export default class AnimeQuery extends Query<AnimeState> {
     selectAnimes$ = this.select('animes');
     selectSelected$ = this.select('selected');
     selectEvidenzaAnimes$ = this.select('evidenza');
+    selectSuggeritiAnimes$ = this.select('suggeriti');
     constructor(protected animeStore: AnimeStore) {
         super(animeStore);
     }

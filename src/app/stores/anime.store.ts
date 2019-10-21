@@ -5,6 +5,7 @@ export interface AnimeState {
    animes: Anime[];
    selected: Anime;
    evidenza: Anime[];
+   suggeriti: Anime[];
 }
 export interface Anime {
     id: any;
@@ -23,7 +24,8 @@ export function createInitialState(): AnimeState {
   return {
     animes: [],
     selected: null,
-    evidenza: []
+    evidenza: [],
+    suggeriti: []
   };
 }
 @Injectable({

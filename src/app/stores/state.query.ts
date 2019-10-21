@@ -9,6 +9,7 @@ export default class StateQuery extends Query<State> {
     selectAnime$ = this.select('anime');
     selectManga$ = this.select('manga');
     selectEvidenza$ = this.select('evidenza');
+    selectSuggeriti$ = this.select('suggeriti');
     constructor(protected stateStore: StateStore) {
         super(stateStore);
     }

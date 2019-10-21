@@ -16,7 +16,9 @@ export class AnimeComponent implements OnInit {
   animes: Observable<Anime[]>;
   selected: Observable<Anime>;
   evidenza: Observable<Anime[]>;
+  suggeriti: Observable<Anime[]>;
   viewEvidenza: Observable<boolean>;
+  viewSuggeriti: Observable<boolean>;
 
   constructor(
     private animeQuery: AnimeQuery,
@@ -29,14 +31,23 @@ export class AnimeComponent implements OnInit {
     this.animes = this.animeQuery.selectAnimes$;
     this.selected = this.animeQuery.selectSelected$;
     this.viewEvidenza = this.stateQuery.selectEvidenza$;
+    this.viewSuggeriti = this.stateQuery.selectSuggeriti$;
     this.evidenza = this.animeQuery.selectEvidenzaAnimes$;
+    this.suggeriti = this.animeQuery.selectSuggeritiAnimes$;
   }
   clickEvidenza() {
     let click = false;
     this.viewEvidenza.subscribe(ev => {
       click = !ev;
     });
-    this.stateStore.update({ evidenza: click });
+    this.stateStore.update({ evidenza: click , suggeriti: false});
+  }
+  clickSuggeriti() {
+    let click = false;
+    this.viewSuggeriti.subscribe(ev => {
+      click = !ev;
+    });
+    this.stateStore.update({ suggeriti: click , evidenza: false});
   }
   selectAnime(anime: Anime) {
     this.animeStore.update({ selected: anime });

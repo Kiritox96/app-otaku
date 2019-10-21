@@ -49,7 +49,8 @@ export class AppComponent {
   getData() {
     this.animeService.getAllAnimes().subscribe(list => {
       this.animeStore.update({ animes: list });
-      this.animeStore.update({evidenza: list.filter(anime => array.evidenziati.includes(anime.clean))});
+      this.animeStore.update({ evidenza: list.filter(anime => array.evidenziati.includes(anime.clean)) });
+      this.animeStore.update({ suggeriti: list.filter(anime => array.suggeriti.includes(anime.clean)) });
 
     });
 

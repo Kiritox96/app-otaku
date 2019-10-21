@@ -6,6 +6,7 @@ export interface State {
    anime: boolean;
    manga: boolean;
    evidenza: boolean;
+   suggeriti: boolean;
 }
 
 
@@ -15,6 +16,7 @@ export function createInitialState(): State {
     anime: false,
     manga: false,
     evidenza: false,
+    suggeriti: false,
   };
 }
 @Injectable({
