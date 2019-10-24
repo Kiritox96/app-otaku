@@ -1,58 +1,152 @@
-<!-- Just an image -->
-<nav class="navbar navbar-light" style="background-color: #49b3ff;">
-  <a class="navbar-brand">
-    <img style="display: inline-block;height:65px;width:90px;"src="assets/img/logo.png" alt="Otaku-World">
-  </a>
-</nav>
-<div class="container">
-  <div class="row">
-    <div style="width:30%;">
-      <div class="panel panel-primary">
-        <div class="panel-heading">Lista episodi</div>
-        <div class="panel-body lista">
-            
-            
-            
-          <ul class="list-group" *ngIf="(animes | async)">
-            <div *ngFor="let anime of (animes | async)">
-              <div class="list-group-item" (click)="selectAnime(anime)">
-                <span><span class="badge badge-pill badge-primary pull-right">{{anime.episodi.length}}</span>  {{anime.name}}</span>
-              </div>
-            </div>
-          </ul>
+
+ 
+
+<div class="right">
+  <div class="container">
+      
+      <div class="row__inner" *ngFor="let anime of (evidenza | async)">
+        <div class="tile">
+          <div class="tile__media">
+            <img class="tile__img" src="{{anime.image}}"/>
+          </div>
+          <div class="tile__title">
+            {{anime.name}}
+          </div>
         </div>
       </div>
-    </div>
-    <div style="width:70%;float:left;">
-        col-4
-    </div>
+      
+  </div>
+  <div class="container">
+      
+      <div class="row__inner" *ngFor="let anime of (suggeriti | async)">
+        <div class="tile">
+          <div class="tile__media">
+            <img class="tile__img" src="{{anime.image}}"/>
+          </div>
+          <div class="tile__title">
+            {{anime.name}}
+          </div>
+        </div>
+      </div>
+      
   </div>
 </div>
-<div class="footer-no">
-  <p (click)="clickEvidenza()">Evidenza</p>
-  <p (click)="clickSuggeriti()">Suggeriti</p>
-  <div class="row box" *ngIf="(viewEvidenza | async)">
-    <div *ngFor="let anime of (evidenza | async)">
-      <div class="card">
-        <div class="imgBx">
-          <img src="{{anime.image}}" >
-        </div>
-        <div class="details">
-          <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
-        </div>
-      </div>
+<div class="left">
+    <div style="width:250px;height:250px;">
+      <img width="250" height="250" src="assets/img/logo.png"/>
     </div>
-  </div>
-  <div class="row box" *ngIf="(viewSuggeriti | async)">
-    <div *ngFor="let anime of (suggeriti | async)">
-      <div class="card">
-        <div class="imgBx">
-          <img src="{{anime.image}}" >
-        </div>
-        <div class="details">
-          <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </div>
+
+<!--div class="full">
+  <header>
+
+  </header>
+  <footer>
+    <div class="row" style="padding:15px;display: flex;text-align: center;justify-content: center;">
+        <p (click)="clickEvidenza()" style="font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Evidenza</p>
+        <p (click)="clickSuggeriti()" style="font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Suggeriti</p>
+    </div>
+      
+  </footer>
+  <div class="row box" style="padding-bottom: 15px;" *ngIf="(viewEvidenza | async)">
+      <div *ngFor="let anime of (evidenza | async)">
+        <div class="card">
+          <div class="imgBx">
+            <img src="{{anime.image}}" >
+          </div>
+          <div class="details">
+            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row box" style="padding-bottom: 15px;"  *ngIf="(viewSuggeriti | async)">
+      <div *ngFor="let anime of (suggeriti | async)">
+        <div class="card">
+          <div class="imgBx">
+            <img src="{{anime.image}}" >
+          </div>
+          <div class="details">
+            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+</div-->
+
+
+
+ 
+<!--div id="wrapper">
+  
+    
+
+
+      <div class="row" style="display: flex;align-items: center;justify-content: center;">
+      <p (click)="clickEvidenza()" style="margin:15px;font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Evidenza</p>
+      <p (click)="clickSuggeriti()" style="margin:15px;font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Suggeriti</p>
+    </div>
+    <div class="row box" style="padding-bottom: 15px;" *ngIf="(viewEvidenza | async)">
+      <div *ngFor="let anime of (evidenza | async)">
+        <div class="card">
+          <div class="imgBx">
+            <img src="{{anime.image}}" >
+          </div>
+          <div class="details">
+            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row box" style="padding-bottom: 15px;"  *ngIf="(viewSuggeriti | async)">
+      <div *ngFor="let anime of (suggeriti | async)">
+        <div class="card">
+          <div class="imgBx">
+            <img src="{{anime.image}}" >
+          </div>
+          <div class="details">
+            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+	<div id="column-center">
+    <div *ngFor="let anime of (animes | async)">
+      <div style="width:40%" *ngIf="i%2 == 0">
+        <div class="blog-card">
+          <div class="meta">
+            <img class="photo" src="{{anime.image}}"/>
+          </div>
+          <div class="description">
+            <h1>{{anime.name}}</h1>
+            <h2>{{anime.episodi.length}} episodi</h2>
+            <p class="read-more">
+              <a (click)="selectAnime(anime)">Read More</a>
+            </p>
+          </div>
+        </div>          
+      </div>  
+      <div style="width:40%" *ngIf="i%2 != 0">
+        <div class="blog-card">
+          <div class="meta">
+            <img class="photo" src="{{anime.image}}"/>
+          </div>
+          <div class="description">
+            <h1>{{anime.name}}</h1>
+            <h2>{{anime.episodi.length}} episodi</h2>
+            <p class="read-more">
+              <a (click)="selectAnime(anime)">Read More</a>
+            </p>
+          </div>
+        </div>      
+      </div> 
+      
+    </div>
+  </div>
+ 
+ 
+	
+  
+</div-->

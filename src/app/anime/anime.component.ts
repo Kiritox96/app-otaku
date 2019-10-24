@@ -3,6 +3,7 @@ import * as mongoose from 'mongoose';
 import { AnimeService } from './anime.service';
 import AnimeStore, { Anime } from '../stores/anime.store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import AnimeQuery from '../stores/anime.query';
 import StateStore from '../stores/state.store';
 import StateQuery from '../stores/state.query';

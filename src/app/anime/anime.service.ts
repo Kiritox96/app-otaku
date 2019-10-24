@@ -10,7 +10,7 @@ export class AnimeService {
 
 
     getAllAnimes(): Observable<Anime[]> {
-        this.animeApi = 'http://otaku-world.space/anime';
+        this.animeApi = 'http://otaku-world.space:3000/anime';
         return this.http.get<Anime[]>(this.animeApi);
     }
 
