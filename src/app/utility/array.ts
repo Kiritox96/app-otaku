@@ -29,3 +29,54 @@ export const suggeriti = [
     'boku-dake-ga-inai-machi-erased-a',
     'kiseijuu-sei-no-kakuritsu'
 ];
+
+export const generi = [
+    'Tutti',
+    'Arti marziali',
+    'Avventura',
+    'Azione',
+    'Bambini',
+    'Commedia',
+    'Crimine',
+    'Demenziale',
+    'Demoni',
+    'Dramma',
+    'Ecchi',
+    'Fantascienza',
+    'Fantasy',
+    'Giallo',
+    'Harem',
+    'Hentai',
+    'Horror',
+    'Josei',
+    'Magia',
+    'Mecha',
+    'Militare',
+    'Mistero',
+    'Musica',
+    'Parodia',
+    'Poliziesco',
+    'Psicologico',
+    'Samurai',
+    'Scuola',
+    'Seinen',
+    'Sentimentale',
+    'Shojo',
+    'Shonen',
+    'Slice of life',
+    'Sovrannaturale',
+    'Spazio',
+    'Sport',
+    'Storico',
+    'Superpoteri',
+    'Vampiri',
+    'Videogame',
+    'Yaoi'
+];
+
+export const ordini = [
+    'A-Z',
+    'Z-A',
+    'Più episodi',
+    'Meno episodi'
+];

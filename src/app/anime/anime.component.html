@@ -1,152 +1,145 @@
-
- 
-
 <div class="right">
-  <div class="container">
-      
-      <div class="row__inner" *ngFor="let anime of (evidenza | async)">
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="{{anime.image}}"/>
-          </div>
-          <div class="tile__title">
-            {{anime.name}}
-          </div>
+  <div style="display:flex;justify-content:flex-end;align-items:center;height:100px;background:rgb(99, 154, 236);">
+    <div style="width:350px;height:50px;margin-right: 25px;display:flex;align-items:center;justify-content:space-around;flex-direction:row;">
+      <div style="width: 150px;height: 50px;">
+        <button class="button button5">Registrati</button>
+      </div>
+      <div style="width: 150px;height: 50px;">
+        <button class="button button5">Login</button>
+      </div>
+    </div>
+  </div>
+  <div style="height:100%;overflow-y:scroll;">
+    <div *ngIf="!(all | async)" class="slideshow-container">
+      <div class="mySlides">
+        <div class="sliderSingle" *ngIf="slideIndex == 1">
+          <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+          <img width="300px" height="300px" src="{{(casual | async)[0].image}}">
+          <img width="300px" height="300px" src="{{(casual | async)[1].image}}">
+          <img width="300px" height="300px" src="{{(casual | async)[2].image}}">
+          <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  
+        </div>
+        <div class="sliderSingle" *ngIf="slideIndex == 2">
+          <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+          <img width="300px" height="300px" src="{{(casual | async)[3].image}}">
+          <img width="300px" height="300px" src="{{(casual | async)[4].image}}">
+          <img width="300px" height="300px" src="{{(casual | async)[5].image}}">
+          <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  
+        </div>
+        <div class="sliderSingle" *ngIf="slideIndex == 3">
+          <a class="prev" (click)="plusSlides(-1)">&#10094;</a>
+          <img width="300px" height="300px" src="{{(casual | async)[6].image}}">
+          <img width="300px" height="300px" src="{{(casual | async)[7].image}}">
+          <img width="300px" height="300px" src="{{(casual | async)[8].image}}">
+          <a class="next" (click)="plusSlides(1)">&#10095;</a>
+  
         </div>
       </div>
       
-  </div>
-  <div class="container">
       
-      <div class="row__inner" *ngFor="let anime of (suggeriti | async)">
-        <div class="tile">
-          <div class="tile__media">
-            <img class="tile__img" src="{{anime.image}}"/>
-          </div>
-          <div class="tile__title">
-            {{anime.name}}
+    </div>
+    <div *ngIf="!(all | async)">
+      <div class="firstText">
+        ANIME IN EVIDENZA
+      </div>
+      <div class="container">
+        <div class="row__inner" *ngFor="let anime of (evidenza | async)">
+          <div class="tile">
+            <div class="tile__media">
+              <img class="tile__img" src="{{anime.image}}"/>
+            </div>
+            <div class="tile__title">
+              {{anime.name}}
+            </div>
           </div>
         </div>
       </div>
+      <div class="firstText">
+        ANIME SUGGERITI
+      </div>
+      <div class="container">
+        <div class="row__inner" *ngFor="let anime of (suggeriti | async)">
+          <div class="tile">
+            <div class="tile__media">
+              <img class="tile__img" src="{{anime.image}}"/>
+            </div>
+            <div class="tile__title">
+              {{anime.name}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="(all | async)">
+      <div class="all">
+        <div class="box">
+          <div class="container-1">
+              <input type="search" id="search" placeholder="Cerca anime" />
+          </div>
+        </div>
+        
+        <div style="width: 150px;height: 50px;">
+          <span class="custom-dropdown big">
+            <select>    
+              <option (click)="setOrdine(i)" *ngFor="let title of ordini; let i = index;" [value]="title">
+                {{title}}
+              </option>
+            </select>
+          </span>
+          
+        </div>
+      </div>
       
+      <div *ngIf="(filter | async).filteredList.length > 0">
+        <div class="grid">
+          <div *ngFor="let anime of (filter | async).filteredList; let i = index">
+            <div class="tile">
+              <div class="tile__media">
+                <img class="tile__img" src="{{anime.image}}"/>
+              </div>
+              <div class="tile__title">
+                {{anime.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!(filter | async).filteredList.length > 0">
+        <div class="grid"  >
+          <div *ngFor="let anime of (animes | async); let i = index">
+            <div class="tile">
+              <div class="tile__media">
+                <img class="tile__img" src="{{anime.image}}"/>
+              </div>
+              <div class="tile__title">
+                {{anime.name}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
+  
 </div>
+
+
 <div class="left">
-    <div style="width:250px;height:250px;">
+  <div class="row">
+    <div style="display: block;width:250px;height:250px;">
       <img width="250" height="250" src="assets/img/logo.png"/>
     </div>
-
-</div>
-
-<!--div class="full">
-  <header>
-
-  </header>
-  <footer>
-    <div class="row" style="padding:15px;display: flex;text-align: center;justify-content: center;">
-        <p (click)="clickEvidenza()" style="font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Evidenza</p>
-        <p (click)="clickSuggeriti()" style="font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Suggeriti</p>
+    <div style="padding:20px;font-size: 30px;" (click)="allAnimes()">
+      <span>Lista A-Z</span>
     </div>
-      
-  </footer>
-  <div class="row box" style="padding-bottom: 15px;" *ngIf="(viewEvidenza | async)">
-      <div *ngFor="let anime of (evidenza | async)">
-        <div class="card">
-          <div class="imgBx">
-            <img src="{{anime.image}}" >
-          </div>
-          <div class="details">
-            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
-          </div>
-        </div>
-      </div>
+    <div style="padding:20px;font-size: 30px;">
+      <span>FAQ</span>
     </div>
-    <div class="row box" style="padding-bottom: 15px;"  *ngIf="(viewSuggeriti | async)">
-      <div *ngFor="let anime of (suggeriti | async)">
-        <div class="card">
-          <div class="imgBx">
-            <img src="{{anime.image}}" >
-          </div>
-          <div class="details">
-            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-</div-->
-
-
-
- 
-<!--div id="wrapper">
-  
-    
-
-
-      <div class="row" style="display: flex;align-items: center;justify-content: center;">
-      <p (click)="clickEvidenza()" style="margin:15px;font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Evidenza</p>
-      <p (click)="clickSuggeriti()" style="margin:15px;font-weight: 600;font-size: 20px;color: #777;text-transform: uppercase;">Suggeriti</p>
-    </div>
-    <div class="row box" style="padding-bottom: 15px;" *ngIf="(viewEvidenza | async)">
-      <div *ngFor="let anime of (evidenza | async)">
-        <div class="card">
-          <div class="imgBx">
-            <img src="{{anime.image}}" >
-          </div>
-          <div class="details">
-            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row box" style="padding-bottom: 15px;"  *ngIf="(viewSuggeriti | async)">
-      <div *ngFor="let anime of (suggeriti | async)">
-        <div class="card">
-          <div class="imgBx">
-            <img src="{{anime.image}}" >
-          </div>
-          <div class="details">
-            <h2 style="overflow: hidden;text-overflow: ellipsis;">{{anime.name}}</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    
-	<div id="column-center">
-    <div *ngFor="let anime of (animes | async)">
-      <div style="width:40%" *ngIf="i%2 == 0">
-        <div class="blog-card">
-          <div class="meta">
-            <img class="photo" src="{{anime.image}}"/>
-          </div>
-          <div class="description">
-            <h1>{{anime.name}}</h1>
-            <h2>{{anime.episodi.length}} episodi</h2>
-            <p class="read-more">
-              <a (click)="selectAnime(anime)">Read More</a>
-            </p>
-          </div>
-        </div>          
-      </div>  
-      <div style="width:40%" *ngIf="i%2 != 0">
-        <div class="blog-card">
-          <div class="meta">
-            <img class="photo" src="{{anime.image}}"/>
-          </div>
-          <div class="description">
-            <h1>{{anime.name}}</h1>
-            <h2>{{anime.episodi.length}} episodi</h2>
-            <p class="read-more">
-              <a (click)="selectAnime(anime)">Read More</a>
-            </p>
-          </div>
-        </div>      
-      </div> 
-      
+    <div style="padding:20px;font-size: 30px;">
+      <span>Privacy</span>
     </div>
   </div>
- 
- 
-	
-  
-</div-->
+</div>
+

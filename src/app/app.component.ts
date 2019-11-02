@@ -20,6 +20,7 @@ export class AppComponent {
   data: any;
   listEvidenza: Anime[];
 
+
   constructor(
     private animeQuery: AnimeQuery,
     private stateQuery: StateQuery,
@@ -51,15 +52,15 @@ export class AppComponent {
       this.animeStore.update({ animes: list });
       this.animeStore.update({ evidenza: list.filter(anime => array.evidenziati.includes(anime.clean)) });
       this.animeStore.update({ suggeriti: list.filter(anime => array.suggeriti.includes(anime.clean)) });
-
+      const num = this.genRandom();
+      const randList = list.slice(num, num + 9);
+      this.animeStore.update({ casual: randList});
     });
 
 
   }
-  clickAnime() {
-    this.appService.seeAnime();
-  }
-  clickManga() {
-    this.appService.seeManga();
+  genRandom() {
+    return Math.random() * (200 - 50) + 50;
   }
 }
+

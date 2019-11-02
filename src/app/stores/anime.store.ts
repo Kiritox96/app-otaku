@@ -6,6 +6,13 @@ export interface AnimeState {
    selected: Anime;
    evidenza: Anime[];
    suggeriti: Anime[];
+   casual: Anime[];
+   filter: Filtered;
+}
+export interface Filtered {
+  ordine: number;
+  search: string;
+  filteredList: Anime[];
 }
 export interface Anime {
     id: any;
@@ -19,13 +26,22 @@ export interface Episodi {
     url: string;
     name: string;
 }
+export function createInitialFilter(): Filtered {
+  return {
+    ordine: 1,
+    search: '',
+    filteredList: []
+  };
+}
 
 export function createInitialState(): AnimeState {
   return {
     animes: [],
     selected: null,
     evidenza: [],
-    suggeriti: []
+    suggeriti: [],
+    casual: [],
+    filter: createInitialFilter()
   };
 }
 @Injectable({
