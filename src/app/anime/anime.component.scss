@@ -3,6 +3,7 @@
  
 
 .left {
+  box-shadow: -10px 0px 10px 5px #000000;  
   padding-top:-15px;
   display:flex; 
   justify-content:center; 
@@ -208,6 +209,9 @@
   padding: 80px;
   text-align: center;
 }
+.pp{
+  cursor:pointer;
+}
 
 /* Next & previous buttons */
 .prev, .next {
@@ -243,4 +247,19 @@
   justify-content:space-around;
   align-items:center;
   height:100px;
+}
+
+ul {
+  overflow-y:visible;
+  max-height:300px;
+  list-style-type: none; /* Remove bullets */
+  padding: 0; /* Remove padding */
+  margin: 0; /* Remove margins */
+}
+
+ul li {
+  
+  margin-top: -1px; /* Prevent double borders */
+  background-color: #f6f6f6; /* Add a grey background color */
+  padding: 12px; /* Add some padding */
 }

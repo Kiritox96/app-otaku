@@ -42,7 +42,7 @@ export class AnimeComponent implements OnInit {
 
     this.casual = this.animeQuery.selectCasual$; // slider
 
-    this.selected = this.animeQuery.selectSelected$;
+    this.selected = this.animeQuery.selectSelected$; // selezionato
     this.evidenza = this.animeQuery.selectEvidenzaAnimes$;
     this.suggeriti = this.animeQuery.selectSuggeritiAnimes$;
     this.all = this.stateQuery.selectAll$;
@@ -51,10 +51,16 @@ export class AnimeComponent implements OnInit {
 
   }
   allAnimes() {
+    this.animeStore.update({ selected: null });
     this.stateStore.update({ all: true });
   }
   selectAnime(anime: Anime) {
+    this.stateStore.update({ all: false });
     this.animeStore.update({ selected: anime });
+  }
+  clickHome() {
+    this.stateStore.update({ all: false });
+    this.animeStore.update({ selected: null });
   }
 
   plusSlides(n) {
@@ -72,28 +78,5 @@ export class AnimeComponent implements OnInit {
     }
   }
 
-  setOrdine(i: number) {
-    let s: string;
-    let l: Anime[];
-    this.filter.subscribe(val => {
-      s = val.search;
-      l = val.filteredList;
-      if (i === 0) {
-        l.sort((a, b) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
-      } else if (i === 1) {
-        l.sort((b, a) => a.name < b.name ? -1 : a.name > b.name ? 1 : 0);
-      } else if ( i === 2) {
-
-      } else if ( i === 3 ) {
-
-      }
-      console.log(l);
-    });
-    this.animeStore.update({ filter: {
-      search: s,
-      ordine: i,
-      filteredList: l,
-    }});
-  }
 
 }

@@ -17,7 +17,6 @@ export class AppComponent {
   anime: Observable<boolean>;
   manga: Observable<boolean>;
   animesLength: number;
-  data: any;
   listEvidenza: Anime[];
   evidenza: string[];
   suggeriti: string[];
@@ -27,17 +26,7 @@ export class AppComponent {
     private animeQuery: AnimeQuery,
     private stateQuery: StateQuery,
     private animeService: AnimeService,
-    private animeStore: AnimeStore,
-    private appService: AppService) {
-    this.data = {
-      labels: ['Anime', 'Manga'],
-      datasets: [{
-        data: [this.animesLength, 0],
-        backroundColor: ['#FF6384', '#36A2EB'],
-        hoverBackgroundColor: ['#FF6384', '#36A2EB']
-      }]
-    };
-  }
+    private animeStore: AnimeStore) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngOnInit(): void {
