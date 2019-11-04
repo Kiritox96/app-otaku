@@ -13,5 +13,13 @@ export class AnimeService {
         this.animeApi = 'http://otaku-world.space:3000/anime';
         return this.http.get<Anime[]>(this.animeApi);
     }
+    getAllAnimesEvidenza(): Observable<string[]> {
+        this.animeApi = 'http://otaku-world.space:3000/anime/anime?type=evidenza';
+        return this.http.get<string[]>(this.animeApi);
+    }
+    getAllAnimesSuggeriti(): Observable<string[]> {
+        this.animeApi = 'http://otaku-world.space:3000/anime/anime?type=suggeriti';
+        return this.http.get<string[]>(this.animeApi);
+    }
 
 }

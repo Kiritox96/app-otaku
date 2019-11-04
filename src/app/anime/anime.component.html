@@ -9,7 +9,7 @@
       </div>
     </div>
   </div>
-  <div style="height:100%;overflow-y:scroll;">
+  <div style="height:calc(100vh - 100px);;background:rgb(99, 154, 236);overflow-y:scroll;">
     <div *ngIf="!(all | async)" class="slideshow-container">
       <div class="mySlides">
         <div class="sliderSingle" *ngIf="slideIndex == 1">

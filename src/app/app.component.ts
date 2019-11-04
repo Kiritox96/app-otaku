@@ -19,6 +19,8 @@ export class AppComponent {
   animesLength: number;
   data: any;
   listEvidenza: Anime[];
+  evidenza: string[];
+  suggeriti: string[];
 
 
   constructor(
@@ -48,10 +50,16 @@ export class AppComponent {
   }
 
   getData() {
+    this.animeService.getAllAnimesEvidenza().subscribe(list => {
+      this.evidenza = list;
+    });
+    this.animeService.getAllAnimesSuggeriti().subscribe(list => {
+      this.suggeriti = list;
+    });
     this.animeService.getAllAnimes().subscribe(list => {
       this.animeStore.update({ animes: list });
-      this.animeStore.update({ evidenza: list.filter(anime => array.evidenziati.includes(anime.clean)) });
-      this.animeStore.update({ suggeriti: list.filter(anime => array.suggeriti.includes(anime.clean)) });
+      this.animeStore.update({ evidenza: list.filter(anime => this.evidenza.includes(anime.clean)) });
+      this.animeStore.update({ suggeriti: list.filter(anime => this.suggeriti.includes(anime.clean)) });
       const num = this.genRandom();
       const randList = list.slice(num, num + 9);
       this.animeStore.update({ casual: randList});
